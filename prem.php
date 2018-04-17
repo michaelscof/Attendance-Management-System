@@ -89,9 +89,15 @@ echo "<form method=\"post\" action=\"prem.php\" accept-charset=\"UTF-8\">
           $a=implode(",", $chk);
           $Total;
           $sub=$_SESSION['SCode'];
+          $cour=$_SESSION['var1'];
           for($i=0;$i<count($chk);$i++)
           {
+          	  if($cour=='MCA')
               $result = $conn->query("SELECT Present,Total FROM mca where RegNo='$chk[$i]' and SubId='$sub'");
+          	  if($cour=='BTECH_IT')
+              $result = $conn->query("SELECT Present,Total FROM BTECH_IT where RegNo='$chk[$i]' and SubId='$sub'");
+          	  if($cour=='BTECH_CSE')
+              $result = $conn->query("SELECT Present,Total FROM BTECH_CSE where RegNo='$chk[$i]' and SubId='$sub'");
               $Present=0;
               $Total=0;
               if($result->num_rows>0){
@@ -100,24 +106,44 @@ echo "<form method=\"post\" action=\"prem.php\" accept-charset=\"UTF-8\">
                    $Total=$row['Total'];
              }}
              $Present++;
+             if($cour=='MCA')
              $query="Update mca set Present='$Present' where RegNo='$chk[$i]'  and SubId='$sub'";
+         	 if($cour=='BTECH_CSE')
+             $query="Update BTECH_CSE set Present='$Present' where RegNo='$chk[$i]'  and SubId='$sub'";
+         	 if($cour=='BTECH_IT')
+             $query="Update BTECH_IT set Present='$Present' where RegNo='$chk[$i]'  and SubId='$sub'";
                        $result=$conn->query($query);
           }
           if(count($chk)!=0)
           {
             $Total++;
+            if($cour=='MCA')
             $query="Update mca set Total='$Total' where SubId='$sub'";
+        	if($cour=='BTECH_CSE')
+            $query="Update BTECH_CSE set Total='$Total' where SubId='$sub'";
+        	if($cour=='BTECH_IT')
+            $query="Update BTECH_IT set Total='$Total' where SubId='$sub'";
             $result=$conn->query($query);
           }
           else
           {
+          	  if($cour=='MCA')
               $result = $conn->query("SELECT Total FROM mca where SubId='$sub'");
+          	  if($cour=='BTECH_IT')
+              $result = $conn->query("SELECT Total FROM BTECH_IT where SubId='$sub'");
+          	  if($cour=='BTECH_CSE')
+              $result = $conn->query("SELECT Total FROM BTECH_CSE where SubId='$sub'");
               if($result->num_rows>0){
               while($row = $result->fetch_assoc()){
                    $Total=$row['Total'];
              }}
              $Total++;
+            if($cour=='MCA')
             $query="Update mca set Total='$Total' where SubId='$sub'";
+        	if($cour=='BTECH_CSE')
+            $query="Update BTECH_CSE set Total='$Total' where SubId='$sub'";
+        	if($cour=='BTECH_IT')
+            $query="Update BTECH_IT set Total='$Total' where SubId='$sub'";
              $result=$conn->query($query);
           }
         }
