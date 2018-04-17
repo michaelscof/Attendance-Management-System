@@ -98,7 +98,7 @@ include_once 'dbconnect.php';
       <div class="container">
 	  <img src="logo.png">
 	  <font size=5>
-        <a class="navbar-brand" href="http://localhost/login/dbms/main/mains/studentprof.php"><br>MNNIT ALLAHABAD</a></font>
+        <a class="navbar-brand" href="studentprof.php"><br>MNNIT ALLAHABAD</a></font>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -110,7 +110,7 @@ include_once 'dbconnect.php';
               <a class="nav-link" href="#" data-toggle="modal" data-target="#fModal">Feedback</a>
             </li> -->
             <li class="nav-item">
-              <a class="nav-link" href="http://localhost/login/dbms/main/mains/home.php">Logout</a>
+              <a class="nav-link" href="home.php">Logout</a>
             </li>
           </ul>
         </div>

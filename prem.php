@@ -67,45 +67,7 @@ echo "<form method=\"post\" action=\"prem.php\" accept-charset=\"UTF-8\">
       </tr>
     </thead>
     <tbody>";
-    $p;
-    $var2;
-    if(isset($_REQUEST['Add'])){
-          $chk=$_REQUEST["chk"];
-          $a=implode(",", $chk);
-          $Total;
-          for($i=0;$i<count($chk);$i++)
-          {
-              $result = $conn->query("SELECT Present,Total FROM mca where RegNo='$chk[$i]'");
-              $Present=0;
-              $Total=0;
-              if($result->num_rows>0){
-              while($row = $result->fetch_assoc() ){
-                   $Present=$row['Present'];
-                   $Total=$row['Total'];
-             }}
-             $Present++;
-             $query="Update mca set Present='$Present' where RegNo='$chk[$i]'";
-                       $result=$conn->query($query);
-          }
-          if(count($chk)!=0)
-          {
-            $Total++;
-            $query="Update mca set Total='$Total'";
-            $result=$conn->query($query);
-          }
-          else
-          {
-              $result = $conn->query("SELECT Total FROM mca");
-              if($result->num_rows>0){
-              while($row = $result->fetch_assoc()){
-                   $Total=$row['Total'];
-             }}
-             $Total++;
-            $query="Update mca set Total='$Total'";
-             $result=$conn->query($query);
-          }
-        }
-        $S_Code;
+    $S_Code;
         $var;
         if(isset($_POST['submit']))
         {
@@ -120,6 +82,46 @@ echo "<form method=\"post\" action=\"prem.php\" accept-charset=\"UTF-8\">
             if($var=='MCA')
              $result = $conn->query("SELECT * FROM MCA where SubId='$S_Code' order by RegNo ASC");
         }
+    $p;
+    $var2;
+    if(isset($_REQUEST['Add'])){
+          $chk=$_REQUEST["chk"];
+          $a=implode(",", $chk);
+          $Total;
+          $sub=$_SESSION['SCode'];
+          for($i=0;$i<count($chk);$i++)
+          {
+              $result = $conn->query("SELECT Present,Total FROM mca where RegNo='$chk[$i]' and SubId='$sub'");
+              $Present=0;
+              $Total=0;
+              if($result->num_rows>0){
+              while($row = $result->fetch_assoc() ){
+                   $Present=$row['Present'];
+                   $Total=$row['Total'];
+             }}
+             $Present++;
+             $query="Update mca set Present='$Present' where RegNo='$chk[$i]'  and SubId='$sub'";
+                       $result=$conn->query($query);
+          }
+          if(count($chk)!=0)
+          {
+            $Total++;
+            $query="Update mca set Total='$Total' where SubId='$sub'";
+            $result=$conn->query($query);
+          }
+          else
+          {
+              $result = $conn->query("SELECT Total FROM mca where SubId='$sub'");
+              if($result->num_rows>0){
+              while($row = $result->fetch_assoc()){
+                   $Total=$row['Total'];
+             }}
+             $Total++;
+            $query="Update mca set Total='$Total' where SubId='$sub'";
+             $result=$conn->query($query);
+          }
+        }
+        
         $p=$_SESSION['SCode'];
         $var2=$_SESSION['var1'];
         if($var2=='BTECH_CSE')
