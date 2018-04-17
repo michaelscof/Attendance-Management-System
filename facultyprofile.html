@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+	<style>body{padding-top: 60px;}</style>
+	
+
+    <link href="bootstrap3/css/bootstrap.css" rel="stylesheet" />
+ 
+	<link href="login-register.css" rel="stylesheet" />
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+	
+	<script src="jquery/jquery-1.10.2.js" type="text/javascript"></script>
+	<script src="bootstrap3/js/bootstrap.js" type="text/javascript"></script>
+	<script src="login-register.js" type="text/javascript"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	
+	
+	
+	
+    <title>attendance portal</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/half-slider.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+   
+   <!--student change password modal-->
+
+    <div class="modal fade login" id="changepasswordModal">
+		      <div class="modal-dialog login animated">
+    		      <div class="modal-content">
+    		         <div class="modal-header">
+					<h4 class="modal-title">Change Password</h4>                      
+					  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      
+                    </div>
+                    <div class="modal-body">  
+                        <div class="box">
+                             <div class="content">
+                               
+                                
+                                <div class="error"></div>
+                                <div class="form loginBox">
+                                  <form method="post" action="faculty_change_password.php" accept-charset="UTF-8">
+                                    <input id="email" class="form-control" type="text" placeholder="email" name="email">
+									<input id="password" class="form-control" type="password" placeholder="new_password" name="new_password">
+                                    <input class="btn btn-default btn-login" type="submit" name='submit'value="Confirm">
+                                    </form>
+                                </div>
+                             </div>
+                        </div>
+                        
+                    </div>
+                       
+    		      </div>
+		      </div>
+		 </div>   
+   
+  
+  
+    <!--feedback  modal-->
+
+     <div class="modal fade login" id="fModal">
+		      <div class="modal-dialog login animated">
+    		      <div class="modal-content">
+    		         <div class="modal-header">
+					 <h4 class="modal-title"> Feedback</h4>
+                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        
+                    </div>
+                    <div class="modal-body">  
+                        <div class="box">
+                             <div class="content">
+                               
+                                
+                                <div class="error"></div>
+                                <div class="form loginBox">
+                                     <div class="form-group">
+									<textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="10"  placeholder="Enter feedback here"></textarea>
+									</div>
+									<input class="btn btn-default btn-login" type="button" value="Submit" name="submit">
+                                    </form>
+                                </div>
+                             </div>
+                        </div>
+                       
+                    </div>
+                    <div class="modal-footer">
+                        <div class="forgot login-footer">
+                            
+                        </div>
+                        <div class="forgot register-footer" style="display:none">
+                             <span>Already have an account?</span>
+                             <a href="javascript: showLoginForm();">Login</a>
+                        </div>
+                    </div>        
+    		      </div>
+		      </div>
+		 </div>   
+  
+   
+ 
+  
+  
+  
+  
+  
+    <!-- Navigation -->
+	<font size=3>
+	
+	
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+	  <img src="logo.png">
+	  <font size=5>
+        <a class="navbar-brand" href="#"><br>MNNIT ALLAHABAD</a></font>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            
+			
+			<li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Settings
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#"  class="nav-link"  data-toggle="modal" data-target="#changepasswordModal" >Change Password</a>
+        </div>
+    </li>
+				
+			<li class="nav-item">
+              <a class="nav-link" href="#" class="nav-link"  data-toggle="modal" data-target="#fModal">Feedback</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://localhost/login/dbms/main/mains/home.html">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+	
+	</font>
+		
+	
+
+<br>
+ <font size=3>
+<div class="container">
+  <h2></h2>
+  <div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading">My profile</div>
+      <div class="panel-body">
+	  
+	  
+	  <!--Panel Content-->
+			<div class="container">
+  <table class="table">
+    
+    <tbody>
+
+      <tr >
+        <td>Name</td>
+        <td>ABC</td>
+        
+      </tr>
+      <tr>
+        <td>Faculty id</td>
+        <td>2016CA68</td>
+       </tr>
+      <tr>
+        <td>Year of joining</td>
+        <td>2016</td>
+      </tr>
+	  <tr>
+        <td>Subjects</td>
+        <td>a,b,c</td>
+       </tr>
+	  
+	   <tr>
+        <td>Department</td>
+        <td>CSED</td>
+       </tr>
+	 
+    </tbody>
+  </table>
+</div>
+	  
+	  </div>
+    </div>
+</font>
+
+
+	
+<br>
+	<font size=4>
+	<div class="container">
+  
+  <div class="panel-group">
+    <div class="panel panel-default">
+
+      <div class="panel-heading">Enter Attendance</div>
+      <div class="panel-body">
+         <form method="post" action="choice.php" accept-charset="UTF-8">
+                                    <input id="text" type="text" size="10" placeholder="course" name="course">
+                                    <!-- <input id="password" class="form-control" type="password" placeholder="Name" name="Name"> -->
+                                    <input  type="submit" value="submit" name='submit'>
+         </form>
+	  <br><br>Search by: 
+	  <input type="text" pattern="^[A-Za-z][a-zA-Z0-9-_\.]{5,12}$"  id="myInput" onkeyup="myFunction()" placeholder=" Registration Number "><br><br>
+<div class="container">
+  
+  <table class="table table-striped" id="myTable">
+    <thead>
+      <tr>
+		<th>S.no.</th>
+        <th>Registration no.</th>
+        <th>Name</th>
+        <th>Lecture</th>
+		<!-- <th>Lecture 2</th>
+		<th>Lecture 3</th>
+		<th>Lecture 4</th> -->
+		<th>Total Present</th>
+		<th>Total Absent</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+       <td>2</td>
+        <td>2016ca68</td>
+        <td>preeti</td>
+		
+		<td><div class="radio">
+                      <label><input type="radio" name="l1" group=a>P</label>
+					  <!--  
+                 </div>
+				 <div class="radio"> -->
+                      
+					   <label><input type="radio" name="l1" group=a>A</label>
+              <input  type="submit" value="submit" name='Enter'>
+                 </div>
+    </td>
+    <td>
+      <input type="text" name="l1" group=a>
+
+				 
+		<!--  </td>
+		 <td><div class="radio">
+					
+                      <label><input type="radio" name="l2" group=a>P</label>
+					   
+                 </div>
+				 <div class="radio">
+                      
+					   <label><input type="radio" name="l2" group=a>A</label>
+                 </div>
+				 
+		 </td>
+		 <td><div class="radio">
+                      <label><input type="radio" name="l3" group=a>P</label>
+					   
+                 </div>
+				 <div class="radio">
+                      
+					   <label><input type="radio" name="l3" group=a>A</label>
+                 </div>
+				 
+		 </td>
+		 <td><div class="radio">
+                      <label><input type="radio" name="l4" group=a>P</label>
+					   
+                 </div>
+				 <div class="radio">
+                      
+					   <label><input type="radio" name="l4" group=a>A</label>
+                 </div>
+				 
+		 </td>
+		 <td>3</td>
+		 <td>4</td>
+		  -->
+     <!--  <tr>
+		<td>2</td>
+        <td>2016ca64</td>
+        <td>aakriti</td>
+		
+		<td><div class="radio">
+                      <label><input type="radio" name="1" group=1>P</label>
+					   
+                 </div>
+				 <div class="radio">
+                      
+					   <label><input type="radio" name="1" group=1>A</label>
+                 </div>
+				 
+		 </td> -->
+		 <!-- <td><div class="radio">
+                      <label><input type="radio" name="2" group=2>P</label>
+					   
+                 </div>
+				 <div class="radio">
+                      
+					   <label><input type="radio" name="2" group=2>A</label>
+                 </div>
+				 
+		 </td>
+		 <td><div class="radio">
+                      <label><input type="radio" name="3" group=3>P</label>
+					   
+                 </div>
+				 <div class="radio">
+                      
+					   <label><input type="radio" name="3" group=3>A</label>
+                 </div>
+				 
+		 </td>
+		 <td><div class="radio">
+                      <label><input type="radio" name="4" group=4>P</label>
+					   
+                 </div>
+				 <div class="radio">
+                      
+					   <label><input type="radio" name="4" group=4>A</label>
+                 </div>
+				 
+		 </td>
+		 <td>3</td>
+		 <td>4</td> -->
+		
+      </tr>
+		
+      </tr>
+     
+    </tbody>
+  </table>
+</div>
+
+	  </div>
+    </div>
+	<font>
+	<br>
+
+	
+	<script>
+function myFunction() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+	  
+    }       
+	
+  }
+}
+</script>
+
+	
+    		
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>
